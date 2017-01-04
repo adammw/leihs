@@ -7,7 +7,7 @@ Feature: Sign Contract
   Background:
     Given I am Pius
 
-  @javascript @personas @problematic
+  @javascript @personas @broken
   Scenario: Delete a single line during the hand over
     When I open a hand over
     And I delete a line

@@ -19,6 +19,7 @@ include:
   - cider-ci/jobs/manage_scenarios.yml
   - cider-ci/jobs/manage_flapping_scenarios.yml
   - cider-ci/jobs/manage_problematic_scenarios.yml
+  - cider-ci/jobs/manage_broken_scenarios.yml
 
   ## ADMIN - on branches foo/admin_bar
   # - cider-ci/jobs/leihs_admin_v4stable_scenarios.yml

@@ -66,7 +66,7 @@ Feature: Delegation
     And I hover over the delegation name
     Then the tooltip shows name and responsible person for the delegation
 
-  @javascript @personas @browser @problematic
+  @javascript @personas @browser @broken
   Scenario: Global search
     Given I am Pius
     And there exists a delegation with 'Julie' in its name
