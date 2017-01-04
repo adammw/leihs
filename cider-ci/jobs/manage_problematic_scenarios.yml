@@ -7,7 +7,7 @@ jobs:
     description: |
       Run Manage problematic scenarios under MRI
 
-    priority: -2
+    priority: -1
 
     # run_when:
     #   branch name matches master or manage:
@@ -23,12 +23,15 @@ jobs:
 
     context:
 
+      task_defaults:
+        traits:
+          g2016: true
+        load: 2.0
+        max_trials: 5
+        eager_trials: 1
+        include:
+          - cider-ci/task_components/database.yml
+
       include:
         - cider-ci/shared/main_context.yml
         - cider-ci/tasks/manage_problematic_scenarios.yml
-
-      task_defaults:
-        load: 2
-        max_trials: 10
-        include:
-          - cider-ci/task_components/database.yml
