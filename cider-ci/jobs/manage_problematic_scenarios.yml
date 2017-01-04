@@ -9,17 +9,17 @@ jobs:
 
     priority: -2
 
-    run_when:
-      branch name matches master or manage:
-        type: branch
-        include_match: '^.*(master|manage).*$'
-        exclude_match: '^.*(no-ci|hotspot).*$'
+    # run_when:
+    #   branch name matches master or manage:
+    #     type: branch
+    #     include_match: '^.*(master|manage).*$'
+    #     exclude_match: '^.*(no-ci|hotspot).*$'
 
-    depends_on:
-      manage_scenarios:
-        type: job
-        job_key: manage_scenarios
-        states: [passed]
+    # depends_on:
+    #   manage_scenarios:
+    #     type: job
+    #     job_key: manage_scenarios
+    #     states: [passed]
 
     context:
 
