@@ -152,7 +152,7 @@ end
 When /^one item is defective$/ do
   case @event
     when 'hand_over'
-      @item = @current_inventory_pool.items.in_stock.broken.first
+      @item = FactoryGirl.create(:item, is_broken: true, inventory_pool: @current_inventory_pool)
       step 'I add an item to the hand over'
       sleep 1
       @line_id = find("input[value='#{@item.inventory_code}']").find(:xpath, 'ancestor::div[@data-id]')['data-id']
