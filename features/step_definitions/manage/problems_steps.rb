@@ -167,9 +167,9 @@ Then /^I mark the item as (.*)$/ do |arg1|
     else
       raise
   end
-  find(".modal button[type='submit']").click
   wait_until do
-    page.has_no_selector?('.modal')
+    first(".modal button[type='submit']").try(:click)
+    first('.modal').nil?
   end
 end
 
