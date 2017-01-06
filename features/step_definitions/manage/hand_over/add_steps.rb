@@ -1,15 +1,13 @@
 When /^I add (a|an|a borrowable|an unborrowable) (item|license) to the hand over by providing an inventory code$/ do |item_attr, item_type|
-  existing_model_ids = @customer.reservations_bundles.approved.find_by(inventory_pool_id: @current_inventory_pool).models.map(&:id)
-  items = @current_inventory_pool.items.send(item_type.pluralize)
+  item = FactoryGirl.create(item_type.to_sym, inventory_pool: @current_inventory_pool)
+  case item_attr
+  when 'a borrowable'
+    item.update_attributes(is_borrowable: true)
+  when 'an unborrowable'
+    item.update_attributes(is_borrowable: false)
+  end
+  @inventory_code = item.inventory_code
   @inventory_codes ||= []
-  @inventory_code = case item_attr
-                      when 'a', 'an'
-                        items.in_stock
-                      when 'a borrowable'
-                        items.in_stock.where(is_borrowable: true)
-                      when 'an unborrowable'
-                        items.in_stock.where(is_borrowable: false)
-                    end.detect{|i| not existing_model_ids.include?(i.model_id)}.inventory_code
   @inventory_codes << @inventory_code
   line_amount_before = all('.line', minimum: 1).size
   step 'I close the flash message'
