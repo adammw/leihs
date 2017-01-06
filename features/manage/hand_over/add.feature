@@ -18,7 +18,7 @@ Feature: Add reservations during hand over
   @javascript @personas
   Scenario: Add an option to the hand over providing an inventory code
     Given I open a hand over
-    And I add an option to the hand over by providing an inventory code and a date range
+    And I add an option to the hand over by providing an inventory code
     Then the option is added to the hand over
 
   @javascript @personas @browser

@@ -28,7 +28,7 @@ Feature: Edit contract line during hand over process
   @javascript @personas @browser
   Scenario: Change the time range of an option line
      When I open a hand over
-      And I add an option to the hand over by providing an inventory code and a date range
+      And I add an option to the hand over by providing an inventory code
       And I change the time range for that option
      Then the time range for that option line is changed
 
