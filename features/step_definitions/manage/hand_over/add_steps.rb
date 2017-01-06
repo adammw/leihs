@@ -141,7 +141,7 @@ Then /^each model of the template is added to the hand over for the provided dat
 end
 
 When /^I add so many reservations that I break the maximal quantity of a model$/ do
-  @model ||= (@contract || @customer.reservations_bundles.approved.find_by(inventory_pool_id: @current_inventory_pool)).item_lines.first.model
+  @model ||= FactoryGirl.create(:model_with_items, inventory_pool: @current_inventory_pool)
   @target_name = @model.name
   quantity_to_add = if @contract
                       start_date = Date.parse find('#add-start-date').value
