@@ -94,7 +94,7 @@ When /^I type the beginning of (.*?) name to the add\/assign input field$/ do |t
       @inventory_code = @option.inventory_code
       @option.name
     when 'a model'
-      @model = FactoryGirl.create(:item, inventory_pool: @current_inventory_pool).model
+      @model = FactoryGirl.create(:model_with_items, inventory_pool: @current_inventory_pool)
       @model.name
     when 'that model'
       @model.name
