@@ -104,7 +104,7 @@ end
 Given /^one item is not borrowable$/ do
   case @event
     when 'hand_over'
-      @item = @current_inventory_pool.items.in_stock.unborrowable.first
+      @item = FactoryGirl.create(:item, is_borrowable: false, inventory_pool: @current_inventory_pool)
       step 'I add an item to the hand over'
       @line_id = Reservation.where(item_id: @item.id).first.id
       find(".line[data-id='#{@line_id}']", text: @item.model.name).find('[data-assign-item][disabled]')
