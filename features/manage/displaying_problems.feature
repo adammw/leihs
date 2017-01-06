@@ -51,7 +51,7 @@ Feature: Displaying problems
 
   @personas @javascript @browser @flapping
   Scenario: Showing problems when item is not available while handing over
-    Given I am doing a hand over with models
+    Given I open a hand over with at least one unassigned line
       And a model is no longer available
      Then the last added model line shows the line's problem
       And the problem is displayed as: "Nicht verfügbar 2(3)/7"
