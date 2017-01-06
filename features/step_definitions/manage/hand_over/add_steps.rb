@@ -172,11 +172,6 @@ When /^I add an item to the hand over$/ do
   find('#flash')
 end
 
-Given(/^there is a model or software which all items are set to "(.*?)"$/) do |arg1|
-  @model = case arg1
-             when 'not borrowable'
-               @current_inventory_pool.models.detect { |m| m.items.all? { |i| not i.is_borrowable? } }
-             else
-               'not found'
-           end
+Given(/^there is a model or software which all items are set to "not borrowable"$/) do
+  @model = FactoryGirl.create(:model_with_items, inventory_pool: @current_inventory_pool, is_borrowable: false)
 end
