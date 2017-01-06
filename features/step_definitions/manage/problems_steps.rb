@@ -20,7 +20,8 @@ Given /^a model is no longer available$/ do
     @entity = if @contract
                 @contract
               else
-                item = FactoryGirl.create(:item)
+                item = FactoryGirl.create(:item,
+                                          inventory_pool: @current_inventory_pool)
                 reservation = FactoryGirl.create(:item_line,
                                                  user: @customer,
                                                  item: item,
@@ -224,4 +225,17 @@ Then /^the affected item's line shows the item's problems$/ do
   hover_for_tooltip target
   @problems = []
   @problems << find('.tooltipster-default .tooltipster-content', text: /\w/).text
+end
+
+Given(/^test data setup XXX$/) do
+  @event = 'hand_over'
+  @customer = FactoryGirl.create(:user)
+  FactoryGirl.create(:access_right,
+                     inventory_pool: @current_inventory_pool,
+                     user: @customer,
+                     role: :customer)
+end
+
+Given(/^I open a hand over XXX$/) do
+  visit manage_hand_over_path(@current_inventory_pool, @customer)
 end
