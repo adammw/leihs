@@ -90,16 +90,17 @@ end
 When /^I type the beginning of (.*?) name to the add\/assign input field$/ do |type|
   @target_name = case type
     when 'an option'
-      @option = @current_inventory_pool.options.first
+      @option = FactoryGirl.create(:option, inventory_pool: @current_inventory_pool)
       @inventory_code = @option.inventory_code
       @option.name
     when 'a model'
-      @model = @current_inventory_pool.items.in_stock.first.model
+      @model = FactoryGirl.create(:item, inventory_pool: @current_inventory_pool).model
       @model.name
     when 'that model'
       @model.name
     when 'a template'
-      @template = @current_inventory_pool.templates.first
+      @template = FactoryGirl.create(:template)
+      @current_inventory_pool.templates << @template
       @template.name
   end
   type_into_autocomplete '#assign-or-add-input input', @target_name[0..-2]
