@@ -28,7 +28,7 @@ Feature: Purpose
      And I click an inventory code input field of an item line
      And I select one of those
      And I add an item to the hand over by providing an inventory code
-     And I add an option to the hand over by providing an inventory code and a date range
+     And I add an option to the hand over by providing an inventory code
     And I define a purpose
     Then only items without purpose are assigned that purpose
 
@@ -62,5 +62,5 @@ Feature: Purpose
     And I click an inventory code input field of an item line
     And I select one of those
     And I add an item to the hand over by providing an inventory code
-    And I add an option to the hand over by providing an inventory code and a date range
+    And I add an option to the hand over by providing an inventory code
     Then I don't have to assign a purpose in order to finish the hand over

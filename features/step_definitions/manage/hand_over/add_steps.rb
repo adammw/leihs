@@ -43,7 +43,7 @@ Then /^the item is added to the hand over for the provided date range and the in
   expect(assigned_inventory_codes).to include @inventory_code
 end
 
-When /^I add an option to the hand over by providing an inventory code and a date range$/ do
+When /^I add an option to the hand over by providing an inventory code$/ do
   @option ||= FactoryGirl.create(:option, inventory_pool: @current_inventory_pool)
   @inventory_code = @option.inventory_code
   find('#assign-or-add-input input').set @inventory_code
@@ -74,7 +74,7 @@ When /^I add an option to the hand over which is already existing in the selecte
   @quantity_before = option_line.quantity
   @n = rand(2..5)
   @n.times do
-    step 'I add an option to the hand over by providing an inventory code and a date range'
+    step 'I add an option to the hand over by providing an inventory code'
   end
 end
 
