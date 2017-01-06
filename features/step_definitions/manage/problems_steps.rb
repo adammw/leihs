@@ -135,6 +135,7 @@ Given /^I take back a(n)?( late)? item$/ do |grammar, is_late|
                                 end_date: Date.today - 1)
   end
   @line_id = item_line.id
+  expect(@line_id).to be
   visit manage_take_back_path(@current_inventory_pool, item_line.user)
   expect(has_selector?(".line[data-id='#{@line_id}']")).to be true
 end
