@@ -122,15 +122,16 @@ Given /^I take back a(n)?( late)? item$/ do |grammar, is_late|
   overdued_take_backs = overdued_take_backs.select { |x| x.date < Date.today } if is_late
   overdued_take_back = overdued_take_backs.sample
   @line_id = overdued_take_back.reservations.where(type: 'ItemLine').first.id
+  expect(@line_id).to be
   visit manage_take_back_path(@current_inventory_pool, overdued_take_back.user)
   expect(has_selector?(".line[data-id='#{@line_id}']")).to be true
 end
 
 def open_inspection_for_line(line_id)
-  within(".line[data-id='#{line_id}'] .multibutton") do
-    find('.dropdown-toggle').click
-    find('.dropdown-holder .dropdown-item', text: _('Inspect')).click
-  end
+  expect(line_id).not_to be_blank
+  multibutton_css = ".line[data-id='#{line_id}'] .multibutton"
+  page.execute_script %Q( $("#{multibutton_css} .dropdown-toggle").trigger("mouseover") )
+  find("#{multibutton_css} .dropdown-holder .dropdown-item", text: _('Inspect')).click
   find('.modal')
 end
 

@@ -6,7 +6,6 @@ Feature: Displaying problems
 
   @javascript @browser @personas
   Scenario: Showing problems in an order when a model is not avaiable
-    #Given ich editiere eine Bestellung die nicht in der Vergangenheit liegt
     Given I edit an order
     And a model is no longer available
     Then I see any problems displayed on the relevant reservations
