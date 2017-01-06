@@ -29,7 +29,8 @@ Given /^a model is no longer available$/ do
                                                  status: :approved)
                 @entity = reservation.contract
               end
-    reservation = @entity.item_lines.first
+    reservation ||= @contract.item_lines.first
+    expect(reservation).to be
     @model = reservation.model
     @initial_quantity = @entity.reservations.where(model_id: @model.id).count
     @max_before = reservation.model.availability_in(@entity.inventory_pool).maximum_available_in_period_summed_for_groups(reservation.start_date, reservation.end_date, reservation.group_ids) || 0
