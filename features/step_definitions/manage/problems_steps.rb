@@ -161,6 +161,7 @@ Then /^I mark the item as (.*)$/ do |arg1|
       raise
   end
   find(".modal button[type='submit']").click
+  expect(page).not_to have_selector('.modal')
 end
 
 When /^one item is defective$/ do
