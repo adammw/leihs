@@ -118,12 +118,24 @@ end
 
 Given /^I take back a(n)?( late)? item$/ do |grammar, is_late|
   @event = 'take_back'
-  overdued_take_backs = @current_inventory_pool.visits.take_back.select{|v| v.reservations.any? {|l| l.is_a? ItemLine}}
-  overdued_take_backs = overdued_take_backs.select { |x| x.date < Date.today } if is_late
-  overdued_take_back = overdued_take_backs.sample
-  @line_id = overdued_take_back.reservations.where(type: 'ItemLine').first.id
-  expect(@line_id).to be
-  visit manage_take_back_path(@current_inventory_pool, overdued_take_back.user)
+  user = FactoryGirl.create(:user)
+  FactoryGirl.create(:access_right, inventory_pool: @current_inventory_pool, user: user)
+  item = FactoryGirl.create(:item)
+  item_line = FactoryGirl.create(:item_line,
+                                 item: item,
+                                 model: item.model,
+                                 contract: FactoryGirl.create(:signed_contract,
+                                                              inventory_pool: @current_inventory_pool,
+                                                              user: user),
+                                 user: user,
+                                 status: :signed,
+                                 inventory_pool: @current_inventory_pool)
+  if is_late
+    item_line.update_attributes(start_date: Date.today - 2,
+                                end_date: Date.today - 1)
+  end
+  @line_id = item_line.id
+  visit manage_take_back_path(@current_inventory_pool, item_line.user)
   expect(has_selector?(".line[data-id='#{@line_id}']")).to be true
 end
 
