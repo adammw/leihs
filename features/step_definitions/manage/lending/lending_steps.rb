@@ -182,9 +182,9 @@ Then /^it is added for the selected time span$/ do
 end
 
 
-Given /^I am doing a hand over$/ do
+Given /^I am doing a hand over( with models)?$/ do |with_models|
   @event = 'hand_over'
-  step 'I open a hand over'
+  step "I open a hand over#{with_models}"
 end
 
 When(/^I click on "(.*?)"$/) do |arg1|
