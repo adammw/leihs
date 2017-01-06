@@ -48,7 +48,7 @@ When /^I add an option to the hand over by providing an inventory code and a dat
   @inventory_code = @option.inventory_code
   find('#assign-or-add-input input').set @inventory_code
   find('#assign-or-add button').click
-  find(".line[data-line-type='option_line'] .grey-text", text: @inventory_code)
+  find(".line[data-line-type='option_line'] .grey-text", text: @inventory_code, match: :first)
   step 'the option is added to the hand over'
 end
 
