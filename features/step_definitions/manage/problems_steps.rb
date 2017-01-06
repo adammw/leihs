@@ -172,7 +172,7 @@ When /^one item is defective$/ do
       sleep 1
       @line_id = find("input[value='#{@item.inventory_code}']").find(:xpath, 'ancestor::div[@data-id]')['data-id']
     when 'take_back'
-      @line_id = find(".line[data-line-type='item_line']", match: :first)[:"data-id"]
+      @line_id ||= find(".line[data-line-type='item_line']", match: :first)[:"data-id"]
       step 'I mark the item as defective'
     else
       raise
@@ -182,11 +182,11 @@ end
 Given /^one item is incomplete$/ do
   case @event
     when 'hand_over'
-      @item = @current_inventory_pool.items.in_stock.incomplete.first
+      @item = FactoryGirl.create(:item, is_incomplete: true, inventory_pool: @current_inventory_pool)
       step 'I add an item to the hand over'
       @line_id = find("input[value='#{@item.inventory_code}']").find(:xpath, 'ancestor::div[@data-id]')['data-id']
     when 'take_back'
-      @line_id = find(".line[data-line-type='item_line']", match: :first)[:"data-id"]
+      @line_id ||= find(".line[data-line-type='item_line']", match: :first)[:"data-id"]
       step 'I mark the item as incomplete'
     else
       raise
