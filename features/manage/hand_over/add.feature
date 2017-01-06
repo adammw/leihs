@@ -7,7 +7,7 @@ Feature: Add reservations during hand over
   Background:
     Given I am Pius
 
-  @javascript @personas @flapping
+  @javascript @personas
   Scenario: Add an item to the hand over providing an inventory code
     Given I open a hand over
     When I add a borrowable item to the hand over by providing an inventory code
@@ -21,13 +21,13 @@ Feature: Add reservations during hand over
     And I add an option to the hand over by providing an inventory code and a date range
     Then the option is added to the hand over
 
-  @javascript @personas @flapping
+  @javascript @personas
   Scenario: Increase the quantity of an option of the hand over by adding an option providing an inventory code
     Given I open a hand over with options
     And I add an option to the hand over which is already existing in the selected date range by providing an inventory code
     Then the existing option quantity is increased
 
-  @javascript @personas @browser @flapping
+  @javascript @personas @browser
   Scenario: Add a template to the hand over picking an autocomplete element
     Given I open a hand over
     And I type the beginning of a template name to the add/assign input field
@@ -35,7 +35,7 @@ Feature: Add reservations during hand over
     When I select the template from the list
     Then each model of the template is added to the hand over for the provided date range
 
-  @javascript @personas @browser @flapping
+  @javascript @personas @browser
   Scenario: Add reservations which changes other reservations availability
     Given I open a hand over for today
     And I add so many reservations that I break the maximal quantity of a model
@@ -57,7 +57,7 @@ Feature: Add reservations during hand over
     When I select the model from the list
     Then the model is added to the hand over
 
-  @javascript @personas @browser @flapping
+  @javascript @personas @browser
   Scenario: hand over items even if not borrowable
     Given I open a hand over
     And there is a model or software which all items are set to "not borrowable"
