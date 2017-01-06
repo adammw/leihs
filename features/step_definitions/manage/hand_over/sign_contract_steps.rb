@@ -7,6 +7,8 @@ When(/^I open a hand over( with at least one unassigned line)?( for today)?( wit
     @customer = ip.users.not_as_delegations.detect do |user|
       if unassigned_line and for_today
         user.visits.hand_over.any?{ |v| v.reservations.size >= 3 and v.reservations.any? { |l| not l.item and l.start_date == ip.next_open_date(Time.zone.today) } }
+      elsif unassigned_line
+        user.visits.hand_over.any?{ |v| v.reservations.any? { |l| l.is_a? ItemLine } }
       elsif for_today
         user.visits.hand_over.find { |ho| ho.date == Date.today}
       elsif with_options_or_models
