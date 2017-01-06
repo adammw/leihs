@@ -648,54 +648,54 @@ tasks:
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
         xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:25 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:31
+- name: features/manage/hand_over/add.feature:33
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:31 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:39
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:33 DEFAULT_BROWSER=firefox
+- name: features/manage/hand_over/add.feature:41
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:39 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:45
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:41 DEFAULT_BROWSER=firefox
+- name: features/manage/hand_over/add.feature:47
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:45 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:53
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:47 DEFAULT_BROWSER=firefox
+- name: features/manage/hand_over/add.feature:55
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:53 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:61
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:55 DEFAULT_BROWSER=firefox
+- name: features/manage/hand_over/add.feature:63
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:61 DEFAULT_BROWSER=firefox
-- name: features/manage/hand_over/add.feature:71
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:63 DEFAULT_BROWSER=firefox
+- name: features/manage/hand_over/add.feature:73
   scripts:
     test:
       body: |-
         set -eux
         export PATH=~/.rubies/$RUBY/bin:$PATH
         mkdir -p log
-        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:71 DEFAULT_BROWSER=firefox
+        xvfb-run -a -e log/xvfb.log --server-args='-screen 0 1920x1080x24' bundle exec cucumber -p default  --strict features/manage/hand_over/add.feature:73 DEFAULT_BROWSER=firefox
 - name: features/manage/hand_over/assign.feature:11
   scripts:
     test:

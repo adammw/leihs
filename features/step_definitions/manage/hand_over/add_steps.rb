@@ -175,3 +175,10 @@ end
 Given(/^there is a model or software which all items are set to "not borrowable"$/) do
   @model = FactoryGirl.create(:model_with_items, inventory_pool: @current_inventory_pool, is_borrowable: false)
 end
+
+Then(/^the quantity on the option line is (\d+)$/) do |quantity|
+  within(".line[data-line-type='option_line']", text: @option.inventory_code) do
+    find("input[value='#{quantity}']")
+  end
+  expect(@option_line.reload.quantity).to be == quantity.to_i
+end
