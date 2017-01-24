@@ -78,6 +78,7 @@ end
 
 group :production do
   gem 'scout_apm'
+  gem 'puma'
 end
 
 group :development, :test do
