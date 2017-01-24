@@ -1,4 +1,4 @@
-if ActiveRecord::Base.connection.tables.include?("settings") and not Rails.env.test?
+if !ENV['PRECOMPILE'] && ActiveRecord::Base.connection.tables.include?("settings") && !Rails.env.test?
 
   if time_zone = Setting.time_zone
     Rails.configuration.time_zone = time_zone

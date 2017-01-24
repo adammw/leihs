@@ -1,4 +1,4 @@
-if ActiveRecord::Base.connection.tables.include?('fields')
+if !ENV['PRECOMPILE'] && ActiveRecord::Base.connection.tables.include?('fields')
 
   predefined_fields = [
       {
